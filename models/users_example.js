@@ -31,4 +31,4 @@ const twilight = [
   },
 ];
 
-module.exports = { twilight: twilight };
+module.exports = twilight

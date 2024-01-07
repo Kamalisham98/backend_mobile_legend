@@ -6,21 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const cors = require('cors')
+const cors = require('./config/cors')
 
 var app = express();
-
-const corsOptions ={
-  origin:'http://localhost:3000/',
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(cors())
+app.use(cors)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

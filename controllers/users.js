@@ -6,7 +6,7 @@ const Users = {
       message: "Get all user",
       Success: true,
       code: 200,
-      data: example.twilight,
+      data: example,
     });
   }
 }
