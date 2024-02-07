@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001
 app.use(cors)
 
 // Routers URL
-app.use("/products", productRoutes);
+app.use("/products", (req, res) => productRoutes(req, res));
 app.get("/", (req, res) => {
 res.send('Hello')
 })
