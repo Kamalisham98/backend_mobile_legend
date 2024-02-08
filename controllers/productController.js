@@ -6,7 +6,6 @@ const controller = {};
 
 controller.getAll = async function (req, res) {
   try {
-
     let query = {}
     if (req.query?.game_type != null && req.query?.product_type != null) {
       query = {
@@ -16,7 +15,6 @@ controller.getAll = async function (req, res) {
         }
       }
     }
-console.log(query)
       const data = await Product.findAll(query);
 
       if (data.length > 0) {
@@ -24,6 +22,24 @@ console.log(query)
               .json({ message: "Connection successful", data: data });
       } else {
           res.status(200).json({ message: "Connection failed", data: [] });
+      }
+  } catch (error) {
+      res.status(404).json({ message: error });
+  }
+};
+
+controller.getOne = async function (req, res) {
+  try {
+    const data = await Product.findOne({
+        where:{id: req.params.product_id}
+      });
+
+    console.log(data)
+      if (data) {
+           res.status(200)
+              .json({ message: "Connection successful", data: data });
+      } else {
+          res.status(200).json({ message: "Connection failed", data: {} });
       }
   } catch (error) {
     console.log(error)
